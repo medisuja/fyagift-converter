@@ -93,6 +93,19 @@ class ConverterController extends Controller
         return $url;
     }
 
+    public function toPdf($order_id)
+    {
+        $data = Converter::where('order_id', $order_id)->first();
+        if ((empty($data))) {
+            $response = ['message' => 'Data not found', 'data' => null];
+            return response()->json($response, 404, [], JSON_PRETTY_PRINT);
+        }
+
+        $pdf = PDF::loadView('fyagiftTemplateConverter', compact('data'));
+        $filename = $order_id . "-fyagift.pdf";
+        return $pdf->setPaper([0, 0, 1072.50, 1874], 'landscape')->setWarnings(false)->stream($filename);
+    }
+
     public function getFileUrl($file_name)
     {
         $file_path = storage_path('pdf') . '/' . $file_name . '.pdf';
