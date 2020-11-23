@@ -16,14 +16,8 @@ $router->get('/', function () use ($router) {
     return view('error/Forbidden');
 });
 
-/*
-$router->get('/converter', 'ConverterController@index');
-$router->get('/converter/{id}', 'ConverterController@show');
-$router->post('/converter/{id}/update', 'ConverterController@update');
-$router->post('/converter/{id}/delete', 'ConverterController@delete');
-*/
-
-$router->post('/converter/create', 'ConverterController@create');
-$router->get('/converter/to-pdf/{order_id}', 'ConverterController@toPdf');
+$router->post('/converter/to-pdf', 'ConverterController@create');
+$router->get('/converter/get-file/{name}', 'ConverterController@getFileUrl');
+$router->get('/converter/to-pdf/{order_id}', 'ConverterController@generatePdf');
 
 

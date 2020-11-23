@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Converter; //File Model
-use App\Content; //File Model
+use App\Converter;
+use App\Content;
 use Illuminate\Http\Request;
 use Validator;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -22,8 +22,9 @@ class ConverterController extends Controller
         $status_code = 422;
         $response = ['message' => '', 'data' => null, 'status_code' => $status_code];
 
+        /* validation: start */
         $validator = Validator::make($request->all(), [
-            'order_id' => 'required|max:100',
+            'order_id' => 'required|max:100|unique:converter',
             'name' => 'required|max:100',
             'gender' => 'required||max:10',
             'father_name' => 'required|max:100',
@@ -31,7 +32,6 @@ class ConverterController extends Controller
             'letter' => 'required',
         ]);
 
-        /* validation */
         if ($validator->fails()) {
             return $this->customValidator($validator->errors(), null);
         }
@@ -43,13 +43,7 @@ class ConverterController extends Controller
                 true
             );
         }
-
-        /* validation */
-        // check unique order_id
-        $unique_order_id = Converter::where('order_id', $request->input('order_id'))->first();
-        if (!empty($unique_order_id)) {
-            return $this->customValidator(['Duplicate Order ID'], null, true);
-        }
+        /* validation: end */
 
         $data = new Converter();
         $data->order_id = $request->input('order_id');
@@ -58,16 +52,20 @@ class ConverterController extends Controller
         $data->father_name = $request->input('father_name');
         $data->mother_name = $request->input('mother_name');
         $data->letter = $request->input('letter');
-        $save_data = true; // $data->save();
 
-        if (!$save_data) {
+        /* generate PDF */
+        $get_file_url = $this->generatePdf($data);
+        $data->file_url = $get_file_url;
+
+        if (empty($data->file_url)) {
             $response['message'] = 'failed to generate link converter, contact the admin';
         } else {
+            $data->save();
             $status_code = 200;
             $response['message'] = 'success';
             $response['data'] = [
                 'order_id' => $data->order_id,
-                'download_url' => url('/') . '/converter/to-pdf/' . $data->order_id,
+                'file_url' => $data->file_url,
             ];
             $response['status_code'] = $status_code;
         }
@@ -75,20 +73,36 @@ class ConverterController extends Controller
         return $this->customResponse($response, $status_code);
     }
 
-    public function toPdf($order_id)
+    public function generatePdf($data)
     {
-        $data = Converter::where('order_id', $order_id)->first();
-        if ((empty($data))) {
-            $response = ['message' => 'Data not found', 'data' => null];
-            return response()->json($response, 404, [], JSON_PRETTY_PRINT);
+        $url = "";
+
+        PDF::setOptions(['dpi' => 300]);
+        $pdf = PDF::loadView('fyagiftTemplateConverter', compact('data'));
+        $pdf->setPaper([0, 0, 1072.50, 1874], 'landscape');
+
+        // save to storage
+        $path = storage_path('pdf');
+        $file_name =  $data->order_id . ".pdf";
+        $pdf->save($path . '/' . $file_name);
+
+        $file_path = storage_path('pdf') . '/' . $file_name;
+        if (file_exists($file_path)) {
+            $url = url('/') . '/converter/get-file/' . $data->order_id;
+        }
+        return $url;
+    }
+
+    public function getFileUrl($file_name)
+    {
+        $file_path = storage_path('pdf') . '/' . $file_name . '.pdf';
+        if (file_exists($file_path)) {
+            $file = file_get_contents($file_path);
+            return response($file, 200)->header('Content-Type', 'application/pdf');;
         }
 
-        /* $content = Content::where('type', 'boy')->first();
-        $html = $content->content; */
-
-         $pdf = PDF::loadView('fyagiftBoy', compact('data'));
-         $filename = $order_id . "-fyagift.pdf";
-         return $pdf->setPaper('a4', 'landscape')->setWarnings(false)->stream($filename);
+        $response = ['message' => 'Data not found', 'data' => null];
+        return response()->json($response, 404, [], JSON_PRETTY_PRINT);
     }
 
     public function customValidator($message = 'Validation error', $data = [], $is_custom = false)

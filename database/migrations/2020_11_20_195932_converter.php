@@ -20,6 +20,7 @@ class Converter extends Migration
             $table->string('gender', 10);
             $table->string('father_name', 100);
             $table->string('mother_name', 100);
+            $table->text('file_url');
             $table->text('letter');
             $table->timestamps();
         });
