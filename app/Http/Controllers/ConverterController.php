@@ -103,6 +103,8 @@ class ConverterController extends Controller
 
         $pdf = PDF::loadView('fyagiftTemplateConverter', compact('data'));
         $filename = $order_id . "-fyagift.pdf";
+
+        // return $pdf->setPaper([0, 0, 536.25, 937], 'landscape')->setWarnings(false)->stream($filename);
         return $pdf->setPaper([0, 0, 1072.50, 1874], 'landscape')->setWarnings(false)->stream($filename);
     }
 
