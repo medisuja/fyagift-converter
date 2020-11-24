@@ -112,7 +112,6 @@
     .page-12 {
       background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-12.jpg');
       line-height: 300%;
-      page-break-after: always;
     }
   </style>
 </head>
