@@ -88,7 +88,7 @@ class ConverterController extends Controller
 
         $file_path = storage_path('pdf') . '/' . $file_name;
         if (file_exists($file_path)) {
-            $url = url('/') . '/converter/get-file/' . $data->order_id;
+            $url = url('/') . '/get-file/' . $data->order_id;
         }
         return $url;
     }
