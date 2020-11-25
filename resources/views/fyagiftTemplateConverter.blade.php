@@ -99,13 +99,13 @@
 
     .page-10 {
       background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-10.jpg');
-      line-height: 300%;
+      line-height: 320%;
       page-break-after: always;
     }
 
     .page-11 {
       background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-11.jpg');
-      line-height: 300%;
+      line-height: 310%;
       page-break-after: always;
     }
 
@@ -220,7 +220,7 @@
           padding: 75rem 0rem 0rem 9rem;
           text-align: left;
         ">
-          Sesungguh nya {{$data->name}} begum mengantuk, <br>
+          Sesungguh nya {{$data->name}} belum mengantuk, <br>
           tapi ia ingin sekali dibacakan cerita oleh {{$data->father_name}}.
         </td>
       </tr>
@@ -286,10 +286,12 @@
   <div class="page page-9 font-black">
     <table style="font-size: 54px;">
       <tr>
-        <td style="padding: 0rem 0rem 0rem 0rem;">
+        <td style="
+          padding: 0rem 0rem 0rem 0rem;
+        ">
         </td>
         <td style="
-          padding: 16rem 5rem 0rem 0rem;
+          padding: 18rem 4rem 0rem 0rem;
           text-align: right;
         ">
           “Ahhhhh terimakasih {{$data->father_name}}!” <br>
@@ -310,18 +312,22 @@
         <td style="padding: 0rem 0rem 0rem 0rem;">
         </td>
         <td style="
-          padding: 2rem 5rem 0rem 0rem;
+          padding: 2rem 3.5rem 0rem 0rem;
           text-align: right;
         ">
-          Di kebun binatang,  <br>
-          {{$data->name}} bermain dengan riang. <br>
-          “{{$data->father_name}}, terimakasih ya <br>
-          karna sudah menyempatkan waktu. <br>
-          Dan terimakasih juga sudah <br>
-          menemaniku bermain tanpa sibuk <br>
-          melihat handphone!” kata {{$data->name}} bersemangat. <br>
-          {{$data->father_name}} dan {{$data->mother_name}} tertawa <br>
-          mendengar sindiran {{$data->name}}.
+          Di kebun binatang,<br>
+          {{$data->name}} bermain dengan riang.<br>
+          “{{$data->father_name}}, terimakasih ya<br>
+          karna sudah menyempatkan waktu.<br>
+          Dan terimakasih juga sudah<br>
+          menemaniku bermain tanpa sibuk<br>
+          melihat handphone!” kata {{$data->name}} bersemangat.<br>
+          <div style="
+            padding-right:4rem;
+          ">
+            {{$data->father_name}} dan {{$data->mother_name}} tertawa<br>
+            mendengar sindiran {{$data->name}}.
+          </div>
         </td>
       </tr>
     </table>
@@ -349,7 +355,9 @@
       </tr>
 
       <tr>
-        <td style="padding: 18rem 7rem 0rem 0rem;">
+        <td style="
+          padding: 18rem 7rem 0rem 0rem;"
+        >
           Tahun depan, <br>
           ada kejutan <br>
           apa lagi ya?
