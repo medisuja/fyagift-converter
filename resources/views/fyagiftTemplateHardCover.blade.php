@@ -34,125 +34,106 @@
 
     .page {
       margin: 0px;
-      /* width: 33.05cm;
-      height: 18.92cm; */
-      width: 66.20cm;
-      height: 37.83cm;
+      width: 46.85cm;
+      height: 53cm;
       background-repeat: no-repeat;
       background-size: 100% auto;
     }
 
+    .cover {
+      background-image:url('{{storage_path()}}/images/hard/hard-cover.jpg');
+    }
+
+    .skiblat-1 {
+      background-image:url('{{storage_path()}}/images/hard/skiblat-1.jpg');
+      page-break-after: always;
+    }
+
+    .skiblat-2 {
+      background-image:url('{{storage_path()}}/images/hard/skiblat-2.jpg');
+      page-break-after: always;
+    }
+
     .page-1 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-1.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-1.jpg');
       line-height: 350%;
       page-break-after: always;
     }
 
     .page-2 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-2.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-2.jpg');
       line-height: 400%;
       page-break-after: always;
     }
 
     .page-3 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-3.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-3.jpg');
       line-height: 330%;
       page-break-after: always;
     }
 
     .page-4 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-4.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-4.jpg');
       line-height: 250%;
       page-break-after: always;
     }
 
     .page-5 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-5.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-5.jpg');
       line-height: 300%;
       page-break-after: always;
     }
 
     .page-6 {
       padding: 0;
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-6.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-6.jpg');
       line-height: 300%;
       page-break-after: always;
     }
 
     .page-7 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-7.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-7.jpg');
       line-height: 300%;
       page-break-after: always;
     }
 
     .page-8 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-8.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-8.jpg');
       line-height: 300%;
       page-break-after: always;
     }
 
     .page-9 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-9.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-9.jpg');
       line-height: 300%;
       page-break-after: always;
     }
 
     .page-10 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-10.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-10.jpg');
       line-height: 320%;
       page-break-after: always;
     }
 
     .page-11 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-11.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-11.jpg');
       line-height: 310%;
       page-break-after: always;
     }
 
     .page-12 {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-page-12.jpg');
+      background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-12.jpg');
       line-height: 300%;
-    }
-
-    .skiblat-1 {
-      background-image:url('{{storage_path()}}/images/skiblat-1.jpg');
-      page-break-after: always;
-    }
-    
-    .skiblat-2 {
-      background-image:url('{{storage_path()}}/images/skiblat-2.png');
-      page-break-after: always;
-    }
-
-    .skiblat-3 {
-      background-image:url('{{storage_path()}}/images/skiblat-3.png');
-      page-break-after: always;
-    }
-
-    .skiblat-4 {
-      background-image:url('{{storage_path()}}/images/skiblat-4.png');
-      page-break-after: always;
-    }
-
-    .cover {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-{{$data->cover}}-cover.jpg');
-    }
-
-    .page-hard-cover {
-      margin: 0px;
-      width: 66.10cm;
-      height: 36.46cm;
-      background-repeat: no-repeat;
-      background-size: 100% auto;
-    }
-
-    .hard-cover {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-{{$data->cover}}-cover.jpg');
     }
   </style>
 </head>
 
 <body>
+
+  <!-- <div class="page-hard-cover hard-cover"> -->
+
+  <div class="page skiblat-1"></div>
+
   <!-- <div class="page page-1 font-white">
     <table style="font-size: 56px;">
       <tr>
@@ -403,29 +384,7 @@
     </table>
   </div> -->
 
-  @if($data->cover =='hard')
-    <!-- <div class="page skiblat-1 font-white">
-      <table style="font-size: 48px;">
-        <tr>
-          <td style="">
-          </td>
-          <td style="
-            padding: 40rem 7rem 0rem 2rem;
-          ">
-            {{$data->letter}}
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="page skiblat-2"></div>
-
-    <div class="page skiblat-3"></div>
-
-    <div class="page skiblat-4"></div> -->
-  @endif
-
-  <div class="page-hard-cover hard-cover">
+  <div class="page skiblat-2">
 
 </body>
 
