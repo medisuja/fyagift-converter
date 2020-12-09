@@ -22,6 +22,7 @@ class Converter extends Migration
             $table->string('mother_name', 100);
             $table->text('file_url');
             $table->text('letter');
+            $table->string('cover', 250);
             $table->timestamps();
         });
     }

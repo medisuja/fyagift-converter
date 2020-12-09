@@ -16,8 +16,7 @@ $router->get('/', function () use ($router) {
     return view('error/Forbidden');
 });
 
-$router->post('/converter/to-pdf', 'ConverterController@create');
-$router->get('/converter/get-file/{name}', 'ConverterController@getFileUrl');
-$router->get('/converter/to-pdf/{order_id}', 'ConverterController@generatePdf');
-
-
+$router->post('/to-pdf', 'ConverterController@create');
+$router->get('/get-file/{name}', 'ConverterController@getFileUrl');
+$router->get('/converter/to-pdf/{order_id}', 'ConverterController@toPdf');
+$router->get('/standart-cover', 'ConverterController@standartCover');
