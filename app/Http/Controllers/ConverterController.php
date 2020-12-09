@@ -17,6 +17,10 @@ class ConverterController extends Controller
      */
     public function __construct() { }
 
+    public function check() {
+        echo "OK";
+    }
+
     public function create(Request $request)
     {
         $status_code = 422;
