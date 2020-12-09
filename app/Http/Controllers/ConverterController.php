@@ -118,6 +118,20 @@ class ConverterController extends Controller
         return $pdf->setPaper([0, 0, 1328.03, 1505.19])->setWarnings(false)->stream($filename);
     }
 
+    public function standartCover()
+    {
+        $data = (object) [
+            'father_name' => 'Ayah',
+            'mother_name' => 'Ibu',
+            'name' => 'Iqbal',
+            'gender' => 'boy',
+            'cover' => 'standard',
+        ];
+
+        $pdf = PDF::loadView('fyagiftTemplateStandartCover', compact('data'));
+        return $pdf->setPaper([0, 0, 1072.50, 1874], 'landscape')->setWarnings(false)->stream('demo.pdf');
+    }
+
     public function getFileUrl($file_name)
     {
         $file_path = storage_path('pdf') . '/' . $file_name . '.pdf';
