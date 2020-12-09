@@ -68,85 +68,83 @@
 
     .page-3 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-3.jpg');
-      line-height: 330%;
+      line-height: 360%;
       page-break-after: always;
     }
 
     .page-4 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-4.jpg');
-      line-height: 250%;
+      line-height: 360%;
       page-break-after: always;
     }
 
     .page-5 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-5.jpg');
-      line-height: 300%;
+      line-height: 350%;
       page-break-after: always;
     }
 
     .page-6 {
       padding: 0;
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-6.jpg');
-      line-height: 300%;
+      line-height: 350%;
       page-break-after: always;
     }
 
     .page-7 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-7.jpg');
-      line-height: 300%;
+      line-height: 350%;
       page-break-after: always;
     }
 
     .page-8 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-8.jpg');
-      line-height: 300%;
+      line-height: 350%;
       page-break-after: always;
     }
 
     .page-9 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-9.jpg');
-      line-height: 300%;
+      line-height: 350%;
       page-break-after: always;
     }
 
     .page-10 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-10.jpg');
-      line-height: 320%;
+      line-height: 350%;
       page-break-after: always;
     }
 
     .page-11 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-11.jpg');
-      line-height: 310%;
+      line-height: 375%;
       page-break-after: always;
     }
 
     .page-12 {
       background-image:url('{{storage_path()}}/images/hard/{{$data->gender}}-content-12.jpg');
-      line-height: 300%;
+      line-height: 385%;
+      page-break-after: always;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- <div class="page-hard-cover hard-cover"> -->
+  <div class="page-hard-cover hard-cover">
 
   <div class="page skiblat-1"></div>
 
-  <!-- <div class="page page-1 font-white">
-    <table style="font-size: 56px;">
+  <div class="page page-1 font-white">
+    <table style="font-size: 62px;">
       <tr>
-        <td style="padding: 22rem 12rem 0rem 0rem; vertical-align: top important!;">
+        <td style="padding: 35rem 6rem 0rem 0rem;">
           {{$data->name}} dan {{$data->mother_name}}<br>
           sedang bersiap tidur.<br>
-          {{$data->mother_name}} baru saja selesai<br>
+          <div style="padding-top: 1rem;">
+            {{$data->mother_name}} baru saja selesai
+          <div>
           membacakan buku cerita.
-        </td>
-        <td style="padding: 62rem 2rem 0rem 0rem;">
-          "Aku kangen dibacain {{$data->father_name}}," kata {{$data->name}}.<br>
-          “Sabar ya Dek, {{$data->father_name}} kan sedang sibuk bekerja…”,<br>
-          ucap {{$data->mother_name}} menjelaskan dengan lembut.
         </td>
       </tr>
     </table>
@@ -155,13 +153,32 @@
   <div class="page page-2 font-white">
     <table style="font-size: 72px;">
       <tr>
-        <td style="padding: 26rem 1rem 0rem 0rem; vertical-align: top important!;">
+        <td style="padding: 88rem 0rem 0rem 0rem;">
+          “Aku kangen dibacain {{$data->father_name}},” kata {{$data->name}}.<br>
+          “Sabar ya Nak, {{$data->father_name}} kan sedang sibuk bekerja…”,<br>
+          ucap {{$data->mother_name}} menjelaskan dengan lembut.
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page page-3 font-white">
+    <table style="font-size: 64px;">
+      <tr>
+        <td style="padding: 37rem 4rem 0rem 0rem;">
           “Memangnya<br>
           kalau {{$data->mother_name}} yang cerita,<br>
-          kurang seru ya?”<br>
+          <div style="padding-top: 1rem;">kurang seru ya?”</div>
           tanya {{$data->mother_name}}.
         </td>
-        <td style="padding: 73rem 3rem 0rem 0rem;">
+      </tr>
+    </table>
+  </div>
+
+  <div class="page page-4 font-white">
+    <table style="font-size: 66px;">
+      <tr>
+        <td style="padding: 104rem 1rem 0rem 4rem;">
           {{$data->name}} hanya menghela nafas<br>
           dengan wajah kecewa.
         </td>
@@ -169,220 +186,104 @@
     </table>
   </div>
 
-  <div class="page page-3 font-white">
-    <table style="font-size: 58px;">
+  <div class="page page-5 font-white">
+    <table style="font-size: 66px;">
       <tr>
-        <td style="padding: 7rem 0rem 0rem 2rem; vertical-align: top important!;">
+        <td style="padding: 16rem 1.5rem 0rem 0rem;">
           {{$data->mother_name}} mengecup kening {{$data->name}},<br>
           lalu beranjak pergi.<br>
-          “Kenapa ya orang dewasa itu harus kerja?<br>
+          <div style="padding-top: 1rem;">
+            “Kenapa ya orang dewasa itu harus kerja?
+          <div>
           Sungguh melelahkan
-        </td>
-        <td style="padding: 27rem 6rem 0rem 2rem;">
-          Aku tidak ingin menjadi orang dewasa,”<br>
-          pikir {{$data->name}} dalam hati.<br>
-          Pikirannya menerawang hingga<br>
-          akhirnya ia pun terlelap.
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="page page-4 font-black">
-    <table style="font-size: 49px;">
-      <tr>
-        <td style="padding: 74rem 0rem 0rem 4rem; text-align: left !important;">
-          Keesokan harinya, mereka sedang sarapan bersama.<br>
-          “{{$data->father_name}} nanti kerja sampai malam lagi?” tanya {{$data->name}}<br>
-          sambil berharap ayahnya akan menggeleng.
-        </td>
-        <td style="padding: 74rem 3rem 0rem 0rem; text-align: right !important;">
-          “Iya Dek, maaf ya.<br>
-          {{$data->father_name}} sedang mengejar target nih,” jawab {{$data->father_name}}.
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="page page-5 font-black">
-    <table style="font-size: 54px;">
-      <tr>
-        <td style="padding: 68rem 0rem 0rem 4rem;">
-          {{$data->father_name}} pun kembali bersiap<br>
-          masuk ke ruangan kerjanya.<br>
-          “Doakan pekerjaan {{$data->father_name}}” lancar ya, ucap {{$data->father_name}}<br>
-          sambil menutup pintu.
-        </td>
-        <td style="padding: 74rem 3rem 0rem 0rem;">
-          {{$data->name}} cemberut di kursinya.
         </td>
       </tr>
     </table>
   </div>
 
   <div class="page page-6 font-white">
-    <table style="font-size: 54px;">
+    <table style="font-size: 66px;">
       <tr>
-        <td style="
-          padding: 10rem 7rem 0rem 0rem;
-          text-align: right;
-          vertical-align: top important!;
-        ">
-          Malam harinya, <br>
-          {{$data->mother_name}} bersiap membacakan cerita, <br>
-          namum {{$data->name}} menolak. <br>
-          “Aku ingin langsung tidur saja, {{$data->mother_name}},” ujarnya
-        </td>
-        <td style="
-          padding: 75rem 0rem 0rem 9rem;
-          text-align: left;
-        ">
-          Sesungguh nya {{$data->name}} belum mengantuk, <br>
-          tapi ia ingin sekali dibacakan cerita oleh {{$data->father_name}}.
+        <td style="padding: 39rem 0rem 0rem 4rem;">
+          Aku tidak ingin menjadi orang dewasa,”<br>
+          pikir {{$data->name}} dalam hati.<br>
+          <div style="padding-top: 1.2rem;">Pikirannya menerawang hingga</div>
+          akhirnya ia pun terlelap.
         </td>
       </tr>
     </table>
   </div>
 
   <div class="page page-7 font-black">
-    <table style="font-size: 54px;">
+    <table style="font-size: 64px;">
       <tr>
-        <td style="
-          padding: 69rem 5rem 0rem 0rem;
-          text-align: right;
-        ">
-          Keesokan paginya, {{$data->name}} bangun terlambat. <br>
-          Ia melihat {{$data->father_name}} dan {{$data->mother_name}} sedang menunggu <br>
-          di ruang keluarga. <br>
-          “Kok, {{$data->father_name}} nggak kerja?” tanya Snow.
-        </td>
-        <td style="
-          padding: 5rem 7rem 0rem 0rem;
-          text-align: right;
-          vertical-align: top important!;
-        ">
-          {{$data->father_name}} tersenyum hangat <br>
-          sambil menjawab, <br>
-          “Kemari Nak, ada yang <br>
-          ingin {{$data->father_name}} sampaikan.”
+        <td style="padding: 101.5rem 0rem 0rem 8rem; text-align: left !important;">
+          Keesokan harinya, mereka sedang sarapan bersama.<br>
+          <div style="padding-top: 0.5rem;">“{{$data->father_name}} nanti kerja sampai malam lagi?” tanya {{$data->name}}</div>
+          <div style="padding-top: 0.5rem;">sambil berharap {{$data->father_name}} akan menggeleng.</div>
         </td>
       </tr>
     </table>
   </div>
 
   <div class="page page-8 font-black">
-    <table style="font-size: 54px;">
+    <table style="font-size: 65px;">
       <tr>
-        <td style="
-          padding: 3rem 0rem 0rem 3rem;
-          text-align: left;
-          vertical-align: top important!;
-        ">
-          {{$data->name}} duduk di dekat {{$data->father_name}}. <br>
-          Rasa kesalnya masih tersisa. <br>
-          “Nak, maaf ya, {{$data->father_name}} belakangan sibuk sekali, <br>
-          Karena sedang mengejar target. Targetnya ialah, <br>
-          {{$data->father_name}} ingin semua perkerjaan {{$data->father_name}} yang menumpuk <br>
-          bisa selesai,
-        </td>
-        <td style="
-          padding: 3rem 0rem 0rem 3rem;
-          text-align: left;
-          vertical-align: top important!;
-        ">
-          supaya di ulang tahun kamu <br>
-          minggu depan, <br>
-          kita bisa berwisata ke luar kota!” <br>
-          Snow termenung menatap <br>
-          {{$data->father_name}}nya.
+        <td style="padding: 107rem 8rem 0rem rem; text-align: right !important;">
+          “Iya Nak, maaf ya.<br>
+          {{$data->father_name}} sedang mengejar target nih,” jawab {{$data->father_name}}.
         </td>
       </tr>
     </table>
   </div>
 
   <div class="page page-9 font-black">
-    <table style="font-size: 54px;">
+    <table style="font-size: 68px;">
       <tr>
-        <td style="
-          padding: 0rem 0rem 0rem 0rem;
-        ">
-        </td>
-        <td style="
-          padding: 18rem 4rem 0rem 0rem;
-          text-align: right;
-        ">
-          “Ahhhhh terimakasih {{$data->father_name}}!” <br>
-          ujarnya sambil memeluk {{$data->father_name}} <br>
-          dan {{$data->mother_name}} erat-erat. <br>
-          {{$data->father_name}} dan {{$data->mother_name}} <br>
-          tersenyum lebar, <br>
-          kejutan kecil mereka <br>
-          rupanya berhasil.
+        <td style="padding: 95.5rem 1rem 0rem 0rem;">
+          {{$data->father_name}} pun kembali bersiap<br>
+          masuk ke ruangan kerjanya.<br>
+          <div style="padding-top: 0.7rem;">“Doakan pekerjaan {{$data->father_name}}” lancar ya, ucap {{$data->father_name}}</div>
+          <div style="padding-top: 0.7rem;">sambil menutup pintu.</div>
         </td>
       </tr>
     </table>
   </div>
 
   <div class="page page-10 font-black">
-    <table style="font-size: 54px;">
+    <table style="font-size: 68px;">
       <tr>
-        <td style="padding: 0rem 0rem 0rem 0rem;">
-        </td>
-        <td style="
-          padding: 2rem 3.5rem 0rem 0rem;
-          text-align: right;
-        ">
-          Di kebun binatang,<br>
-          {{$data->name}} bermain dengan riang.<br>
-          “{{$data->father_name}}, terimakasih ya<br>
-          karna sudah menyempatkan waktu.<br>
-          Dan terimakasih juga sudah<br>
-          menemaniku bermain tanpa sibuk<br>
-          melihat handphone!” kata {{$data->name}} bersemangat.<br>
-          <div style="
-            padding-right:4rem;
-          ">
-            {{$data->father_name}} dan {{$data->mother_name}} tertawa<br>
-            mendengar sindiran {{$data->name}}.
-          </div>
+        <td style="padding: 111rem 0rem 0rem 0rem;">
+          {{$data->name}} cemberut di kursinya.
         </td>
       </tr>
     </table>
   </div>
 
-  <div class="page page-11 font-black">
-    <table style="font-size: 54px;">
+  <div class="page page-11 font-white">
+    <table style="font-size: 68px;">
       <tr>
-        <td style="
-          padding: 9rem 8rem 0rem 0rem;
-        ">
-          {{$data->name}} bersiap meniup lilin ulang tahunnya. <br>
-          “Ini ulang tahunku yang terbaik! Aku puas <br>
-          sekali” katanya antusias. “Kalau sudah <br>
-          puas, berarti kamu tidak ingin lagi <br>
-          jalan-jalan bersama {{$data->father_name}}?” tanya {{$data->father_name}} <br>
-          usil. “Kok begitu, ya tentu ingin dong! <br>
-          Lagi” ujar {{$data->name}} penuh semangat. “Iya, <br>
-          iya, “jawab {{$data->father_name}}. “Besok ya?” cecar {{$data->name}}. <br>
-          {{$data->father_name}} dan {{$data->mother_name}} tertawa mendengar <br>
-          permintaan anaknya. {{$data->name}} lalu meniup <br>
-          lilinnya dengan penuh sukacita.
+        <td style="padding: 14.5rem 17rem 0rem 0rem; text-align: right !important;">
+          Malam harinya, <br>
+          {{$data->mother_name}} bersiap membacakan cerita, <br>
+          namum {{$data->name}} menolak. “Aku ingin <br>
+          <div style="padding-top: 0.5rem;">langsung tidur saja, {{$data->mother_name}},” ujarnya</div>
         </td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td style="
-          padding: 18rem 7rem 0rem 0rem;"
-        >
-          Tahun depan, <br>
-          ada kejutan <br>
-          apa lagi ya?
-        </td>
-        <td></td>
       </tr>
     </table>
-  </div> -->
+  </div>
+
+  <div class="page page-12 font-white">
+    <table style="font-size: 68px;">
+      <tr>
+        <td style="padding: 99rem 0rem 0rem 27rem; text-align: left !important;">
+          Sesungguhnya {{$data->name}} belum mengantuk, <br>
+          tapi ia ingin sekali dibacakan cerita <br>
+          oleh {{$data->father_name}}.
+        </td>
+      </tr>
+    </table>
+  </div>
 
   <div class="page skiblat-2">
 
