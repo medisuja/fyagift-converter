@@ -34,6 +34,7 @@ class ConverterController extends Controller
             'father_name' => 'required|max:100',
             'mother_name' => 'required|max:100',
             'letter' => 'required',
+            'cover' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -47,6 +48,14 @@ class ConverterController extends Controller
                 true
             );
         }
+
+        if ($request->input('cover') != "hard" && $request->input('cover') != "standard") {
+            return $this->customValidator(
+                ['The cover field are only allowed with "hard" or "standard" value'],
+                null,
+                true
+            );
+        }
         /* validation: end */
 
         $data = new Converter();
@@ -56,6 +65,7 @@ class ConverterController extends Controller
         $data->father_name = $request->input('father_name');
         $data->mother_name = $request->input('mother_name');
         $data->letter = $request->input('letter');
+        $data->cover = $request->input('cover');
 
         /* generate PDF */
         $get_file_url = $this->generatePdf($data);
@@ -92,7 +102,7 @@ class ConverterController extends Controller
 
         $file_path = storage_path('pdf') . '/' . $file_name;
         if (file_exists($file_path)) {
-            $url = url('/') . '/converter/get-file/' . $data->order_id;
+            $url = url('/') . '/get-file/' . $data->order_id;
         }
         return $url;
     }
@@ -105,9 +115,25 @@ class ConverterController extends Controller
             return response()->json($response, 404, [], JSON_PRETTY_PRINT);
         }
 
-        $pdf = PDF::loadView('fyagiftTemplateConverter', compact('data'));
+        $pdf = PDF::loadView('fyagiftTemplateHardCover', compact('data'));
         $filename = $order_id . "-fyagift.pdf";
-        return $pdf->setPaper([0, 0, 1072.50, 1874], 'landscape')->setWarnings(false)->stream($filename);
+
+        // return $pdf->setPaper([0, 0, 536.25, 937], 'landscape')->setWarnings(false)->stream($filename);
+        return $pdf->setPaper([0, 0, 1328.03, 1505.19])->setWarnings(false)->stream($filename);
+    }
+
+    public function standartCover()
+    {
+        $data = (object) [
+            'father_name' => 'Ayah',
+            'mother_name' => 'Ibu',
+            'name' => 'Iqbal',
+            'gender' => 'boy',
+            'cover' => 'standard',
+        ];
+
+        $pdf = PDF::loadView('fyagiftTemplateStandartCover', compact('data'));
+        return $pdf->setPaper([0, 0, 1072.50, 1874], 'landscape')->setWarnings(false)->stream('demo.pdf');
     }
 
     public function getFileUrl($file_name)
