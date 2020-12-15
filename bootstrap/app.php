@@ -80,6 +80,7 @@ $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Barryvdh\DomPDF\ServiceProvider::class);
+$app->register(LynX39\LaraPdfMerger\PdfMergerServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

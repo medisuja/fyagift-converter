@@ -7,6 +7,7 @@ use App\Content;
 use Illuminate\Http\Request;
 use Validator;
 use Barryvdh\DomPDF\Facade as PDF;
+use LynX39\LaraPdfMerger\Facades\PdfMerger;
 
 class ConverterController extends Controller
 {
@@ -115,11 +116,46 @@ class ConverterController extends Controller
             return response()->json($response, 404, [], JSON_PRETTY_PRINT);
         }
 
-        $pdf = PDF::loadView('fyagiftTemplateHardCover', compact('data'));
+        $pdf = PDF::loadView('fyagiftTemplateConverter', compact('data'));
         $filename = $order_id . "-fyagift.pdf";
 
         // return $pdf->setPaper([0, 0, 536.25, 937], 'landscape')->setWarnings(false)->stream($filename);
-        return $pdf->setPaper([0, 0, 1328.03, 1505.19])->setWarnings(false)->stream($filename);
+        return $pdf->setPaper([0, 0, 1072.50, 1874], 'landscape')->setWarnings(false)->stream($filename);
+    }
+
+    public function generateHardCover($gender)
+    {
+        PDF::setOptions(['dpi' => 300]);
+        $pdf = PDF::loadView('templateHardCover', compact('gender'));
+        // return $pdf->setPaper([0, 0, 910, 1421], 'landscape')->setWarnings(false)->stream('hard-cover.pdf');
+        $pdf->setPaper([0, 0, 910, 1421], 'landscape');
+        $pdf->save(storage_path('pdf') . '/' . $gender . "-hard-cover.pdf");
+    }
+
+    public function toPdfHardCover($order_id)
+    {
+        $data = Converter::where('order_id', $order_id)->first();
+        if ((empty($data))) {
+            $response = ['message' => 'Data not found', 'data' => null];
+            return response()->json($response, 404, [], JSON_PRETTY_PRINT);
+        }
+
+        $pdf = PDF::loadView('fyagiftTemplateHardCover', compact('data'));
+        $file_name =  $data->order_id . ".pdf";
+        // return $pdf->setPaper([0, 0, 1328.03, 1505.19])->setWarnings(false)->stream($file_name);
+        $pdf->setPaper([0, 0, 1328.03, 1505.19]);
+
+        // save to storage
+        $path = storage_path('pdf');
+        $pdf->save($path . '/' . $file_name);
+
+        $pdfMerger = PDFMerger::init();
+        $pdfMerger->addPDF(storage_path('pdf/' . $data->gender . '-hard-cover.pdf'), 'all');
+        // $pdfMerger->addPDF(storage_path('pdf/skiblat-1.pdf'), 'all');
+        // $pdfMerger->addPDF(storage_path('pdf/skiblat-2.pdf'), 'all');
+        $pdfMerger->addPDF(storage_path('pdf/' . $file_name), 'all');
+        $pdfMerger->merge();
+        $pdfMerger->save(storage_path('pdf/' . $file_name), "file");
     }
 
     public function standartCover()
