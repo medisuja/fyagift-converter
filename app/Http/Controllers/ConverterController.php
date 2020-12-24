@@ -142,7 +142,7 @@ class ConverterController extends Controller
 
         $pdf = PDF::loadView('fyagiftTemplateHardCover', compact('data'));
         $file_name =  $data->order_id . ".pdf";
-        // return $pdf->setPaper([0, 0, 1328.03, 1505.19])->setWarnings(false)->stream($file_name);
+        return $pdf->setPaper([0, 0, 1328.03, 1505.19])->setWarnings(false)->stream($file_name);
         $pdf->setPaper([0, 0, 1328.03, 1505.19]);
 
         // save to storage
