@@ -69,7 +69,13 @@ class ConverterController extends Controller
         $data->cover = $request->input('cover');
 
         /* generate PDF */
-        $get_file_url = $this->generatePdf($data);
+        $get_file_url = '';
+
+        if ($data->cover == 'hard') {
+            $get_file_url = $this->generateHardCover($data);
+        } else {
+            $get_file_url = $this->generatePdf($data);
+        }
         $data->file_url = $get_file_url;
 
         if (empty($data->file_url)) {
@@ -123,13 +129,38 @@ class ConverterController extends Controller
         return $pdf->setPaper([0, 0, 1072.50, 1874], 'landscape')->setWarnings(false)->stream($filename);
     }
 
-    public function generateHardCover($gender)
+    public function generateHardCover($data)
     {
-        PDF::setOptions(['dpi' => 300]);
+        /* PDF::setOptions(['dpi' => 300]);
         $pdf = PDF::loadView('templateHardCover', compact('gender'));
         // return $pdf->setPaper([0, 0, 910, 1421], 'landscape')->setWarnings(false)->stream('hard-cover.pdf');
         $pdf->setPaper([0, 0, 910, 1421], 'landscape');
-        $pdf->save(storage_path('pdf') . '/' . $gender . "-hard-cover.pdf");
+        $pdf->save(storage_path('pdf') . '/' . $gender . "-hard-cover.pdf"); */
+
+        $url = "";
+
+        PDF::setOptions(['dpi' => 300]);
+        $pdf = PDF::loadView('fyagiftTemplateHardCover', compact('data'));
+        $pdf->setPaper([0, 0, 1328.03, 1505.19]);
+
+        // save to storage
+        $path = storage_path('pdf');
+        $file_name =  $data->order_id . ".pdf";
+        $pdf->save($path . '/' . $file_name);
+
+        $pdfMerger = PDFMerger::init();
+        $pdfMerger->addPDF(storage_path('pdf/' . $data->gender . '-hard-cover.pdf'), 'all');
+        // $pdfMerger->addPDF(storage_path('pdf/skiblat-1.pdf'), 'all');
+        // $pdfMerger->addPDF(storage_path('pdf/skiblat-2.pdf'), 'all');
+        $pdfMerger->addPDF(storage_path('pdf/' . $file_name), 'all');
+        $pdfMerger->merge();
+        $pdfMerger->save(storage_path('pdf/' . $file_name), "file");
+
+        $file_path = storage_path('pdf') . '/' . $file_name;
+        if (file_exists($file_path)) {
+            $url = url('/') . '/get-file/' . $data->order_id;
+        }
+        return $url;
     }
 
     public function toPdfHardCover($order_id)
@@ -143,7 +174,7 @@ class ConverterController extends Controller
         $pdf = PDF::loadView('fyagiftTemplateHardCover', compact('data'));
         $file_name =  $data->order_id . ".pdf";
         return $pdf->setPaper([0, 0, 1328.03, 1505.19])->setWarnings(false)->stream($file_name);
-        $pdf->setPaper([0, 0, 1328.03, 1505.19]);
+        /* $pdf->setPaper([0, 0, 1328.03, 1505.19]);
 
         // save to storage
         $path = storage_path('pdf');
@@ -155,7 +186,7 @@ class ConverterController extends Controller
         // $pdfMerger->addPDF(storage_path('pdf/skiblat-2.pdf'), 'all');
         $pdfMerger->addPDF(storage_path('pdf/' . $file_name), 'all');
         $pdfMerger->merge();
-        $pdfMerger->save(storage_path('pdf/' . $file_name), "file");
+        $pdfMerger->save(storage_path('pdf/' . $file_name), "file"); */
     }
 
     public function standartCover()

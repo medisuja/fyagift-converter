@@ -137,23 +137,11 @@
     .cover {
       background-image:url('{{storage_path()}}/images/{{$data->gender}}-{{$data->cover}}-cover.jpg');
     }
-
-    .page-hard-cover {
-      margin: 0px;
-      width: 66.10cm;
-      height: 36.46cm;
-      background-repeat: no-repeat;
-      background-size: 100% auto;
-    }
-
-    .hard-cover {
-      background-image:url('{{storage_path()}}/images/{{$data->gender}}-{{$data->cover}}-cover.jpg');
-    }
   </style>
 </head>
 
 <body>
-  <!-- <div class="page page-1 font-white">
+  <div class="page page-1 font-white">
     <table style="font-size: 56px;">
       <tr>
         <td style="padding: 22rem 12rem 0rem 0rem; vertical-align: top important!;">
@@ -401,10 +389,10 @@
         <td></td>
       </tr>
     </table>
-  </div> -->
+  </div>
 
   @if($data->cover =='hard')
-    <!-- <div class="page skiblat-1 font-white">
+    <div class="page skiblat-1 font-white">
       <table style="font-size: 48px;">
         <tr>
           <td style="">
@@ -422,10 +410,10 @@
 
     <div class="page skiblat-3"></div>
 
-    <div class="page skiblat-4"></div> -->
+    <div class="page skiblat-4"></div>
   @endif
 
-  <div class="page-hard-cover hard-cover">
+  <div class="page cover">
 
 </body>
 
